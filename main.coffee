@@ -49,7 +49,7 @@ do ->
 
     $('#_timeLine').find('._message').each ->
       # 今日の日付でなければスルー
-      return true if $(@).find('._timeStamp') < util.startOfDayTimeStamp()
+      return true if $(@).find('._timeStamp').data('tm') < util.startOfDayTimeStamp()
 
       # 指定形式以外のテキストはスルー
       task_text     = $(@).find('.chatInfoTaskContentArea').text()
