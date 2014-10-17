@@ -1,5 +1,5 @@
 {
-    "version": "0.1.0",
+    "version": "0.3.0",
     "manifest_version": 2,
  
     "name": "Chatwork Helper",
@@ -13,5 +13,9 @@
                 "main.js"
             ]
         }
+      ], 
+
+    "web_accessible_resources": [
+      "bower_components/jquery/dist/jquery.min.map"
     ]
 }
