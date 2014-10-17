@@ -39,7 +39,6 @@ do ->
 
 # bento
 do ->
-  $time_line    = $('#_timeLine')
   $chat_buttons = $('#_chatSendTool')
 
   # 集計ボタンをインサート
@@ -48,7 +47,7 @@ do ->
   $chat_buttons.on 'click', '#_bento', ->
     bentos = {}
 
-    $time_line.find('._message').each ->
+    $('#_timeLine').find('._message').each ->
       # 今日の日付でなければスルー
       return true if $(@).find('._timeStamp') < util.startOfDayTimeStamp()
 
