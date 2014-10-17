@@ -5,6 +5,7 @@ uglify = require('gulp-uglify')
 gulp.task 'js', ->
   gulp.src('main.coffee')
       .pipe coffee()
+      .pipe uglify()
       .pipe gulp.dest('')
 
 gulp.task 'watch', ->
