@@ -53,7 +53,7 @@ do ->
 
       # 指定形式以外のテキストはスルー
       task_text     = $(@).find('.chatInfoTaskContentArea').text()
-      matched_array = task_text.match(/([一-龠ー〜ぁ-んァ-ヶ]+)\s*[:：]\s*([一-龠ー〜ぁ-んァ-ヶ]+)/)
+      matched_array = task_text.match(/([一-龠ー〜ぁ-んァ-ヶ]+)\s*[:：]\s*(.+)/)
       return true unless matched_array
 
       bentos[matched_array[2]] or= []
