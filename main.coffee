@@ -29,26 +29,28 @@ do ->
   $chat_buttons = $('#_chatSendTool')
 
   # 集計ボタンをインサート
-  $chat_buttons.append('<li id="_bento" role="button" class="_showDescription" aria-label="Bento の集計"><span class="icoSizeLarge" style="font-size: 12px; background: #444; color: #fff; padding: 2px 5px;  -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 10px; font-weight: bold; ">B</span></li>')
+  $chat_buttons.append('<li id="_bento" role="button" class="_showDescription" aria-label="お弁当をオーダーする"><span class="icoSizeLarge" style="font-size: 12px; background: #444; color: #fff; padding: 2px 5px;  -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 10px; font-weight: bold; ">B</span></li>')
 
   $chat_buttons.on 'click', '#_bento', ->
-    bentos = {}
 
-    $('#_timeLine').find('._message').each ->
-      # 今日の日付でなければスルー
-      return true if $(@).find('._timeStamp').data('tm') < util.startOfDayTimeStamp()
-
-      # 指定形式以外のテキストはスルー
-      task_text     = $(@).find('.chatInfoTaskContentArea').text()
-      matched_array = task_text.match(/([一-龠ー〜ぁ-んァ-ヶ]+)\s*[:：]\s*(.+)/)
-      return true unless matched_array
-
-      bentos[matched_array[2]] or= []
-
-      unless matched_array[1] in bentos[matched_array[2]]
-        bentos[matched_array[2]].push(matched_array[1])
-
-    for menu, persons of bentos
-      person_names = []
-      person_names.push "#{person}" for person in persons
-      $text_area.val "#{$text_area.val()}\n #{menu} (#{persons.length})：#{person_names.join(', ')}"
+  # $chat_buttons.on 'click', '#_bento', ->
+  #   bentos = {}
+  #
+  #   $('#_timeLine').find('._message').each ->
+  #     # 今日の日付でなければスルー
+  #     return true if $(@).find('._timeStamp').data('tm') < util.startOfDayTimeStamp()
+  #
+  #     # 指定形式以外のテキストはスルー
+  #     task_text     = $(@).find('.chatInfoTaskContentArea').text()
+  #     matched_array = task_text.match(/([一-龠ー〜ぁ-んァ-ヶ]+)\s*[:：]\s*(.+)/)
+  #     return true unless matched_array
+  #
+  #     bentos[matched_array[2]] or= []
+  #
+  #     unless matched_array[1] in bentos[matched_array[2]]
+  #       bentos[matched_array[2]].push(matched_array[1])
+  #
+  #   for menu, persons of bentos
+  #     person_names = []
+  #     person_names.push "#{person}" for person in persons
+  #     $text_area.val "#{$text_area.val()}\n #{menu} (#{persons.length})：#{person_names.join(', ')}"
