@@ -12,25 +12,12 @@ $text_area = $("#_chatText")
 do ->
   input_pattern_map =
     to: /[@＠][\s　]/
-    emotion: /[:：][\s　]/
-    task: /[+＋][\s　]/
 
   shortcuts =
     to: ->
       return true unless input_pattern_map.to.test($text_area.val())
       $text_area.val $text_area.val().replace(input_pattern_map.to, "")
       $("#_to").trigger "click"
-
-    emotion: ->
-      return true unless input_pattern_map.emotion.test($text_area.val())
-      $text_area.val $text_area.val().replace(input_pattern_map.emotion, "")
-      $("#_emoticon").trigger "click"
-
-    task: ->
-      return true unless input_pattern_map.task.test($text_area.val())
-      $text_area.val $text_area.val().replace(input_pattern_map.task, "")
-      $("#_taskNameInput").focus()
-
 
   $text_area.on "keyup", ->
     for pattern of input_pattern_map
